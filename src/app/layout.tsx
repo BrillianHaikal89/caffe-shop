@@ -11,8 +11,8 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: 'Aroma Haven Café',
-  description: 'Experience premium coffee in a cozy atmosphere',
+  title: 'All The Time Café',
+  description: 'Kopi nya enak tau jika penasaran pesanlah',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
