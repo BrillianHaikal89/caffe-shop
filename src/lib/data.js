@@ -233,3 +233,96 @@ export const cafeInfo = {
       ]
     }
   ];
+  
+  // Gallery images
+  export const galleryImages = [
+    {
+      src: "/images/gallery1.jpg",
+      alt: "Café interior",
+      title: "Our Cozy Space",
+      description: "The perfect atmosphere for work or relaxation"
+    },
+    {
+      src: "/images/gallery2.jpg",
+      alt: "Coffee preparation",
+      title: "Coffee Brewing",
+      description: "Watching our baristas work their magic"
+    },
+    {
+      src: "/images/gallery3.jpg",
+      alt: "Latte art",
+      title: "Latte Art",
+      description: "Beautiful designs on every cup"
+    },
+    {
+      src: "/images/gallery4.jpg",
+      alt: "Café seating",
+      title: "Outdoor Seating",
+      description: "Enjoy your coffee in the fresh air"
+    },
+    {
+      src: "/images/gallery5.jpg",
+      alt: "Coffee beans",
+      title: "Premium Beans",
+      description: "Sourced from ethical farms worldwide"
+    },
+    {
+      src: "/images/gallery6.jpg",
+      alt: "Pastry display",
+      title: "Fresh Pastries",
+      description: "Baked daily in our kitchen"
+    }
+  ];
+  
+  // Team members
+  export const teamMembers = [
+    {
+      name: "Alex Johnson",
+      role: "Founder & Head Barista",
+      bio: "Coffee enthusiast with over 10 years of experience in specialty coffee.",
+      image: "/images/founder1.jpg"
+    },
+    {
+      name: "Jamie Smith",
+      role: "Co-Founder & Pastry Chef",
+      bio: "Trained in Paris, Jamie brings artisanal baking techniques to our café.",
+      image: "/images/founder2.jpg"
+    },
+    {
+      name: "Taylor Reed",
+      role: "Manager",
+      bio: "Ensures everything runs smoothly while maintaining our high standards.",
+      image: "/images/team1.jpg"
+    },
+    {
+      name: "Morgan Lee",
+      role: "Barista",
+      bio: "Known for creating the most intricate latte art designs.",
+      image: "/images/team2.jpg"
+    }
+  ];
+  
+  // Events
+  export const upcomingEvents = [
+    {
+      title: "Coffee Tasting Night",
+      date: "June 15, 2025",
+      time: "7:00 PM - 9:00 PM",
+      description: "Sample our new seasonal beans and learn about their origins.",
+      image: "/images/events/event1.jpg"
+    },
+    {
+      title: "Latte Art Workshop",
+      date: "June 22, 2025",
+      time: "4:00 PM - 6:00 PM",
+      description: "Learn the basics of creating beautiful designs in your coffee.",
+      image: "/images/events/event2.jpg"
+    },
+    {
+      title: "Live Music Friday",
+      date: "Every Friday",
+      time: "6:00 PM - 8:00 PM",
+      description: "Local musicians perform while you enjoy your evening coffee.",
+      image: "/images/events/event3.jpg"
+    }
+  ];

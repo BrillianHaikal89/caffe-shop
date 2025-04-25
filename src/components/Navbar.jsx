@@ -1,19 +1,31 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
+    <nav className={`sticky top-0 z-50 transition-all duration-300 ${
+      scrolled ? 'bg-white shadow-md' : 'bg-transparent'
+    }`}>
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <div className="relative w-10 h-10">
+            <div className="relative w-12 h-12">
               <Image 
                 src="/logo.png" 
                 alt="Aroma Haven Café" 
@@ -22,28 +34,38 @@ export default function Navbar() {
                 priority
               />
             </div>
-            <span className="text-xl font-bold text-amber-900">Aroma Haven</span>
+            <span className={`text-xl font-bold ${scrolled ? 'text-amber-900' : 'text-white'}`}>
+              Aroma Haven
+            </span>
           </Link>
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
-            <Link href="/" className="text-gray-700 hover:text-amber-700 transition duration-300">
+            <Link href="/" className={`hover:text-amber-700 transition duration-300 ${
+              scrolled ? 'text-gray-700' : 'text-white'
+            }`}>
               Home
             </Link>
-            <Link href="/menu" className="text-gray-700 hover:text-amber-700 transition duration-300">
+            <Link href="/menu" className={`hover:text-amber-700 transition duration-300 ${
+              scrolled ? 'text-gray-700' : 'text-white'
+            }`}>
               Menu
             </Link>
-            <Link href="/#about" className="text-gray-700 hover:text-amber-700 transition duration-300">
+            <Link href="/#about" className={`hover:text-amber-700 transition duration-300 ${
+              scrolled ? 'text-gray-700' : 'text-white'
+            }`}>
               About Us
             </Link>
-            <Link href="/#contact" className="text-gray-700 hover:text-amber-700 transition duration-300">
+            <Link href="/#contact" className={`hover:text-amber-700 transition duration-300 ${
+              scrolled ? 'text-gray-700' : 'text-white'
+            }`}>
               Contact
             </Link>
           </div>
           
           {/* Order Button (Desktop) */}
           <div className="hidden md:block">
-            <button className="bg-amber-700 hover:bg-amber-800 text-white px-6 py-2 rounded-full transition duration-300">
+            <button className="btn-primary">
               Order Online
             </button>
           </div>
@@ -52,7 +74,7 @@ export default function Navbar() {
           <div className="md:hidden">
             <button 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-gray-700 hover:text-amber-700 focus:outline-none"
+              className={`focus:outline-none ${scrolled ? 'text-gray-700' : 'text-white'}`}
             >
               {mobileMenuOpen ? (
                 <i className="fas fa-times text-2xl"></i>
@@ -65,7 +87,7 @@ export default function Navbar() {
         
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200">
+          <div className="md:hidden py-4 border-t border-gray-200 bg-white animate-fadeIn">
             <div className="flex flex-col space-y-4">
               <Link 
                 href="/" 
@@ -95,7 +117,7 @@ export default function Navbar() {
               >
                 Contact
               </Link>
-              <button className="bg-amber-700 hover:bg-amber-800 text-white px-6 py-2 rounded-full transition duration-300 w-full">
+              <button className="btn-primary w-full">
                 Order Online
               </button>
             </div>
