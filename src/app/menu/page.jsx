@@ -1,9 +1,72 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import { menuData } from '../../lib/data';
-import MenuCategory from '../../components/MenuCategory';
 import Image from 'next/image';
+import BookMenu from '../../components/BookMenu';
+import Cart from '../../components/Cart';
 
 export default function Menu() {
+  const [cart, setCart] = useState([]);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [totalItems, setTotalItems] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  // Update cart totals when the cart changes
+  useEffect(() => {
+    const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
+    const price = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+    
+    setTotalItems(itemCount);
+    setTotalPrice(price);
+  }, [cart]);
+
+  // Add item to cart
+  const addToCart = (item) => {
+    setCart(currentCart => {
+      // Check if item is already in cart
+      const existingItemIndex = currentCart.findIndex(cartItem => cartItem.id === item.id);
+      
+      if (existingItemIndex >= 0) {
+        // Item exists, increment quantity
+        const updatedCart = [...currentCart];
+        updatedCart[existingItemIndex] = {
+          ...updatedCart[existingItemIndex],
+          quantity: updatedCart[existingItemIndex].quantity + 1
+        };
+        return updatedCart;
+      } else {
+        // Item doesn't exist, add it with quantity 1
+        return [...currentCart, { ...item, id: `${item.name}-${Date.now()}`, quantity: 1 }];
+      }
+    });
+  };
+
+  // Update item quantity in cart
+  const updateCartItem = (id, quantity) => {
+    setCart(currentCart => {
+      if (quantity <= 0) {
+        // Remove item if quantity is 0 or less
+        return currentCart.filter(item => item.id !== id);
+      } else {
+        // Update quantity
+        return currentCart.map(item => 
+          item.id === id ? { ...item, quantity } : item
+        );
+      }
+    });
+  };
+
+  // Remove item from cart
+  const removeFromCart = (id) => {
+    setCart(currentCart => currentCart.filter(item => item.id !== id));
+  };
+
+  // Clear cart
+  const clearCart = () => {
+    setCart([]);
+  };
+
   return (
     <>
       {/* Banner Menu */}
@@ -19,7 +82,32 @@ export default function Menu() {
         </div>
       </div>
 
-      {/* Konten Menu */}
+      {/* Floating cart button */}
+      <button 
+        onClick={() => setIsCartOpen(true)}
+        className="fixed bottom-8 right-8 z-50 bg-amber-700 hover:bg-amber-800 text-white rounded-full p-4 shadow-lg transition-all duration-300 flex items-center"
+      >
+        <i className="fas fa-shopping-cart text-2xl mr-2"></i>
+        <span className="font-bold">{totalItems}</span>
+        {totalItems > 0 && (
+          <span className="ml-3 bg-white text-amber-900 px-2 py-1 rounded-full text-sm font-bold">
+            Rp {totalPrice.toLocaleString('id-ID')}
+          </span>
+        )}
+      </button>
+
+      {/* Cart sidebar */}
+      <Cart 
+        cart={cart}
+        isOpen={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
+        updateQuantity={updateCartItem}
+        removeItem={removeFromCart}
+        clearCart={clearCart}
+        totalPrice={totalPrice}
+      />
+
+      {/* Book Menu */}
       <main className="py-16 bg-amber-50">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">
@@ -31,31 +119,8 @@ export default function Menu() {
             </p>
           </div>
           
-          {/* Opsi Filter Menu - dapat dibuat fungsional dengan komponen klien */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            <button className="px-6 py-2 rounded-full bg-amber-700 text-white font-medium">
-              Semua Item
-            </button>
-            <button className="px-6 py-2 rounded-full bg-white text-amber-900 border border-amber-700 font-medium">
-              Kopi
-            </button>
-            <button className="px-6 py-2 rounded-full bg-white text-amber-900 border border-amber-700 font-medium">
-              Non-Kopi
-            </button>
-            <button className="px-6 py-2 rounded-full bg-white text-amber-900 border border-amber-700 font-medium">
-              Makanan
-            </button>
-            <button className="px-6 py-2 rounded-full bg-white text-amber-900 border border-amber-700 font-medium">
-              Vegan
-            </button>
-          </div>
-          
-          {/* Kategori Menu */}
-          <div className="space-y-24">
-            {menuData.map((category, index) => (
-              <MenuCategory key={index} category={category} />
-            ))}
-          </div>
+          {/* Book Menu Component */}
+          <BookMenu menuData={menuData} addToCart={addToCart} />
         </div>
       </main>
       
@@ -66,8 +131,11 @@ export default function Menu() {
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             Kunjungi kami di toko atau pesan secara online untuk pengambilan atau pengiriman.
           </p>
-          <button className="bg-white text-amber-900 px-8 py-3 rounded-full font-bold hover:bg-amber-100 transition duration-300">
-            Pesan Online Sekarang
+          <button 
+            className="bg-white text-amber-900 px-8 py-3 rounded-full font-bold hover:bg-amber-100 transition duration-300"
+            onClick={() => setIsCartOpen(true)}
+          >
+            Lihat Pesanan Anda
           </button>
         </div>
       </section>
