@@ -141,14 +141,14 @@ export default function Home() {
                 <i className="fas fa-quote-left"></i>
               </div>
               <p className="italic text-gray-600 mb-6 relative z-10 text-lg">
-                "Kafe terbaik di kota! Latte signature mereka luar biasa, dan suasananya sempurna untuk bekerja maupun bersantai."
+                "Kafe terbaik di kota! Kopi susu signature mereka luar biasa, dan suasananya sempurna untuk bekerja maupun bersantai."
               </p>
               <div className="flex items-center">
                 <div className="w-12 h-12 rounded-full bg-amber-200 flex items-center justify-center text-amber-700 font-bold mr-4">
-                  SJ
+                  B
                 </div>
                 <div>
-                  <p className="font-semibold text-amber-900">Sarah Johnson</p>
+                  <p className="font-semibold text-amber-900">Brillian</p>
                   <p className="text-gray-500 text-sm">Pelanggan Setia</p>
                 </div>
                 <div className="ml-auto text-amber-500">
@@ -171,10 +171,10 @@ export default function Home() {
               </p>
               <div className="flex items-center">
                 <div className="w-12 h-12 rounded-full bg-amber-200 flex items-center justify-center text-amber-700 font-bold mr-4">
-                  MC
+                  H
                 </div>
                 <div>
-                  <p className="font-semibold text-amber-900">Michael Chen</p>
+                  <p className="font-semibold text-amber-900">Haikal</p>
                   <p className="text-gray-500 text-sm">Pengunjung Harian</p>
                 </div>
                 <div className="ml-auto text-amber-500">
