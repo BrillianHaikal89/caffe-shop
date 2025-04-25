@@ -365,7 +365,7 @@ function TableOfContents({ categories, isMobile }) {
   );
 }
 
-// Menu Category Page component
+// Menu Category Page component - FIXED FOR MOBILE
 function MenuCategoryPage({ name, description, items, pageNumber, totalPages, addToCart, isMobile }) {
   return (
     <div className="flex flex-col h-full">
@@ -398,7 +398,7 @@ function MenuCategoryPage({ name, description, items, pageNumber, totalPages, ad
               className="flex flex-col bg-white rounded-lg p-3 sm:p-4 shadow-md hover:shadow-lg transition-shadow"
             >
               {isMobile ? (
-                // Mobile layout for menu items
+                // Mobile layout for menu items - FIXED VERSION
                 <>
                   <div className="flex items-start mb-3">
                     <div className="relative w-16 h-16 rounded-md overflow-hidden mr-3">
@@ -410,20 +410,21 @@ function MenuCategoryPage({ name, description, items, pageNumber, totalPages, ad
                       />
                     </div>
                     
-                    <div className="flex-1">
+                    <div className="flex-1 min-w-0">
                       <div className="flex justify-between mb-1">
-                        <h3 className="text-base font-semibold text-amber-900 pr-2">{item.name}</h3>
+                        <h3 className="text-base font-semibold text-amber-900 pr-2 truncate">{item.name}</h3>
                         <span className="text-amber-900 font-bold whitespace-nowrap">
                           Rp {item.price.toLocaleString('id-ID')}
                         </span>
                       </div>
                       
-                      <p className="text-gray-600 text-xs">{item.description}</p>
+                      <p className="text-gray-600 text-xs line-clamp-2">{item.description}</p>
                     </div>
                   </div>
                   
-                  <div className="flex items-center justify-between">
-                    <div className="flex flex-wrap gap-1">
+                  {/* Fixed mobile layout for badges and button */}
+                  <div className="flex items-center justify-between mt-1">
+                    <div className="flex flex-wrap gap-1 max-w-32">
                       {item.isVegan && (
                         <span className="bg-green-100 text-green-800 text-xs px-1 py-0.5 rounded flex items-center">
                           <i className="fas fa-leaf text-xs mr-1"></i> Vegan
@@ -438,9 +439,9 @@ function MenuCategoryPage({ name, description, items, pageNumber, totalPages, ad
                     
                     <button 
                       onClick={() => addToCart(item)}
-                      className="bg-amber-700 hover:bg-amber-800 text-white px-3 py-1 rounded text-sm flex items-center transition-colors"
+                      className="bg-amber-700 hover:bg-amber-800 text-white px-2 py-1 rounded text-xs flex items-center justify-center transition-colors min-w-14 ml-1"
                     >
-                      <i className="fas fa-plus mr-1"></i> Tambah
+                      <i className="fas fa-plus text-xs mr-1"></i> Tambah
                     </button>
                   </div>
                 </>
