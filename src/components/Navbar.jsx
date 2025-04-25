@@ -28,23 +28,23 @@ export default function Navbar() {
             <div className="relative w-12 h-12">
               <Image 
                 src="/logo.png" 
-                alt="Aroma Haven Café" 
+                alt="All The Time Café" 
                 fill
                 className="object-contain"
                 priority
               />
             </div>
             <span className={`text-xl font-bold ${scrolled ? 'text-amber-900' : 'text-white'}`}>
-              Aroma Haven
+              All The Time
             </span>
           </Link>
           
-          {/* Desktop Navigation */}
+          {/* Navigasi Desktop */}
           <div className="hidden md:flex space-x-8">
             <Link href="/" className={`hover:text-amber-700 transition duration-300 ${
               scrolled ? 'text-gray-700' : 'text-white'
             }`}>
-              Home
+              Beranda
             </Link>
             <Link href="/menu" className={`hover:text-amber-700 transition duration-300 ${
               scrolled ? 'text-gray-700' : 'text-white'
@@ -54,23 +54,23 @@ export default function Navbar() {
             <Link href="/#about" className={`hover:text-amber-700 transition duration-300 ${
               scrolled ? 'text-gray-700' : 'text-white'
             }`}>
-              About Us
+              Tentang Kami
             </Link>
             <Link href="/#contact" className={`hover:text-amber-700 transition duration-300 ${
               scrolled ? 'text-gray-700' : 'text-white'
             }`}>
-              Contact
+              Kontak
             </Link>
           </div>
           
-          {/* Order Button (Desktop) */}
+          {/* Tombol Pesan (Desktop) */}
           <div className="hidden md:block">
             <button className="btn-primary">
-              Order Online
+              Pesan Daring
             </button>
           </div>
           
-          {/* Mobile Menu Button */}
+          {/* Tombol Menu Mobile */}
           <div className="md:hidden">
             <button 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -85,7 +85,7 @@ export default function Navbar() {
           </div>
         </div>
         
-        {/* Mobile Menu */}
+        {/* Menu Mobile */}
         {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-200 bg-white animate-fadeIn">
             <div className="flex flex-col space-y-4">
@@ -94,7 +94,7 @@ export default function Navbar() {
                 className="text-gray-700 hover:text-amber-700 transition duration-300"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Home
+                Beranda
               </Link>
               <Link 
                 href="/menu" 
@@ -108,17 +108,17 @@ export default function Navbar() {
                 className="text-gray-700 hover:text-amber-700 transition duration-300"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                About Us
+                Tentang Kami
               </Link>
               <Link 
                 href="/#contact" 
                 className="text-gray-700 hover:text-amber-700 transition duration-300"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Contact
+                Kontak
               </Link>
               <button className="btn-primary w-full">
-                Order Online
+                Pesan Daring
               </button>
             </div>
           </div>

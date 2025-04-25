@@ -1,31 +1,31 @@
 export const cafeInfo = {
-    name: "Aroma Haven Café",
-    slogan: "Where passion for coffee meets a warm, inviting atmosphere",
+    name: "All The Time Café",
+    slogan: "Di mana passion terhadap kopi bertemu dengan suasana hangat dan mengundang",
     foundedYear: 2018,
-    address: "123 Coffee Street, Café City, CC 12345",
+    address: "Jalan Kopi 123, Kota Kafe, KK 12345",
     phone: "(555) 123-4567",
-    email: "hello@aromahaven.com",
+    email: "halo@allthetime.com",
     socialMedia: {
-      instagram: "https://instagram.com/aromahaven",
-      facebook: "https://facebook.com/aromahaven",
-      twitter: "https://twitter.com/aromahaven"
+      instagram: "https://instagram.com/allthetime",
+      facebook: "https://facebook.com/allthetime",
+      twitter: "https://twitter.com/allthetime"
     },
     hours: {
-      mondayToFriday: "7AM - 8PM",
-      saturday: "8AM - 10PM",
-      sunday: "8AM - 8PM"
+      mondayToFriday: "07.00 - 20.00",
+      saturday: "08.00 - 22.00",
+      sunday: "08.00 - 20.00"
     }
   };
   
   export const menuData = [
     {
-      name: "Coffee Specialties",
-      description: "Our signature coffee drinks crafted with freshly roasted beans and expert techniques.",
+      name: "Spesialitas Kopi",
+      description: "Minuman kopi signature kami yang dibuat dengan biji kopi segar dan teknik ahli.",
       items: [
         {
-          name: "Signature Blend",
-          description: "Our house blend with notes of chocolate, caramel, and a hint of citrus.",
-          price: 3.50,
+          name: "Racikan Signature",
+          description: "Racikan rumah kami dengan sentuhan cokelat, karamel, dan secuil citrus.",
+          price: 50000,
           image: "/images/menu/coffee1.jpg",
           isPopular: true,
           isVegan: true,
@@ -33,39 +33,39 @@ export const cafeInfo = {
           allergens: []
         },
         {
-          name: "Smooth Cappuccino",
-          description: "Equal parts espresso, steamed milk, and milk foam topped with cinnamon.",
-          price: 4.25,
+          name: "Cappuccino Lembut",
+          description: "Espresso, susu panas, dan busa susu dengan taburan kayu manis.",
+          price: 55000,
           image: "/images/menu/coffee2.jpg",
           isPopular: false,
           isVegan: false,
           isGlutenFree: true,
-          allergens: ["Dairy"]
+          allergens: ["Susu"]
         },
         {
           name: "Caramel Macchiato",
-          description: "Espresso with steamed milk, vanilla syrup, and caramel drizzle.",
-          price: 4.75,
+          description: "Espresso dengan susu panas, sirup vanila, dan taburan karamel.",
+          price: 60000,
           image: "/images/menu/coffee3.jpg",
           isPopular: true,
           isVegan: false,
           isGlutenFree: true,
-          allergens: ["Dairy"]
+          allergens: ["Susu"]
         },
         {
-          name: "Mocha Dream",
-          description: "Rich espresso with chocolate, steamed milk, and whipped cream.",
-          price: 5.00,
+          name: "Mimpi Mocha",
+          description: "Espresso kaya dengan cokelat, susu panas, dan krim kocok.",
+          price: 65000,
           image: "/images/menu/coffee4.jpg",
           isPopular: false,
           isVegan: false,
           isGlutenFree: true,
-          allergens: ["Dairy"]
+          allergens: ["Susu"]
         },
         {
           name: "Cold Brew",
-          description: "Slow-steeped for 24 hours for a smooth, rich flavor with low acidity.",
-          price: 4.50,
+          description: "Diseduh selama 24 jam untuk rasa yang lembut, kaya, dengan asam rendah.",
+          price: 55000,
           image: "/images/menu/coffee5.jpg",
           isPopular: true,
           isVegan: true,
@@ -73,35 +73,35 @@ export const cafeInfo = {
           allergens: []
         },
         {
-          name: "Vanilla Latte",
-          description: "Espresso, steamed milk, and vanilla syrup topped with foam.",
-          price: 4.75,
+          name: "Latte Vanila",
+          description: "Espresso, susu panas, dan sirup vanila yang ditambah busa.",
+          price: 60000,
           image: "/images/menu/coffee6.jpg",
           isPopular: false,
           isVegan: false,
           isGlutenFree: true,
-          allergens: ["Dairy"]
+          allergens: ["Susu"]
         }
       ]
     },
     {
-      name: "Non-Coffee Beverages",
-      description: "Refreshing alternatives for those who prefer something different.",
+      name: "Minuman Non-Kopi",
+      description: "Alternatif menyegarkan bagi mereka yang ingin mencoba sesuatu yang berbeda.",
       items: [
         {
           name: "Matcha Latte",
-          description: "Premium ceremonial grade matcha with steamed milk.",
-          price: 5.25,
+          description: "Matcha upacara premium dengan susu panas.",
+          price: 65000,
           image: "/images/menu/noncoffee1.jpg",
           isPopular: true,
           isVegan: false,
           isGlutenFree: true,
-          allergens: ["Dairy"]
+          allergens: ["Susu"]
         },
         {
-          name: "Fresh Mint Tea",
-          description: "Organic mint leaves steeped to perfection.",
-          price: 3.75,
+          name: "Teh Mint Segar",
+          description: "Daun mint organik yang diseduh dengan sempurna.",
+          price: 45000,
           image: "/images/menu/noncoffee2.jpg",
           isPopular: false,
           isVegan: true,
@@ -109,91 +109,91 @@ export const cafeInfo = {
           allergens: []
         },
         {
-          name: "Hot Chocolate",
-          description: "Premium dark chocolate melted into steamed milk and topped with whipped cream.",
-          price: 4.50,
+          name: "Cokelat Panas",
+          description: "Cokelat hitam premium yang dilelehkan ke dalam susu panas dan ditambah krim kocok.",
+          price: 55000,
           image: "/images/menu/noncoffee3.jpg",
           isPopular: true,
           isVegan: false,
           isGlutenFree: true,
-          allergens: ["Dairy"]
+          allergens: ["Susu"]
         },
         {
-          name: "Fresh Strawberry Smoothie",
-          description: "Fresh strawberries blended with yogurt and honey.",
-          price: 5.50,
+          name: "Smoothie Stroberi Segar",
+          description: "Stroberi segar diblender dengan yogurt dan madu.",
+          price: 65000,
           image: "/images/menu/noncoffee4.jpg",
           isPopular: false,
           isVegan: false,
           isGlutenFree: true,
-          allergens: ["Dairy"]
+          allergens: ["Susu"]
         }
       ]
     },
     {
-      name: "Pastries & Desserts",
-      description: "Freshly baked goods and sweet treats to complement your beverage.",
+      name: "Pastri & Dessert",
+      description: "Kue segar dan camilan manis untuk melengkapi minuman Anda.",
       items: [
         {
-          name: "Butter Croissant",
-          description: "Flaky, buttery layers baked to golden perfection.",
-          price: 3.25,
+          name: "Croissant Mentega",
+          description: "Lapisan renyah bermentega yang dipanggang hingga keemasan.",
+          price: 40000,
           image: "/images/menu/pastry1.jpg",
           isPopular: true,
           isVegan: false,
           isGlutenFree: false,
-          allergens: ["Gluten", "Dairy", "Eggs"]
+          allergens: ["Gluten", "Susu", "Telur"]
         },
         {
-          name: "Chocolate Chip Cookie",
-          description: "Soft-baked cookie with premium chocolate chunks.",
-          price: 2.75,
+          name: "Kue Keping Cokelat",
+          description: "Kue lembut dengan potongan cokelat premium.",
+          price: 35000,
           image: "/images/menu/pastry2.jpg",
           isPopular: true,
           isVegan: false,
           isGlutenFree: false,
-          allergens: ["Gluten", "Dairy", "Eggs"]
+          allergens: ["Gluten", "Susu", "Telur"]
         },
         {
-          name: "Blueberry Muffin",
-          description: "Moist muffin loaded with fresh blueberries.",
-          price: 3.50,
+          name: "Muffin Bluberi",
+          description: "Muffin lembab penuh dengan bluberi segar.",
+          price: 45000,
           image: "/images/menu/pastry3.jpg",
           isPopular: false,
           isVegan: false,
           isGlutenFree: false,
-          allergens: ["Gluten", "Dairy", "Eggs"]
+          allergens: ["Gluten", "Susu", "Telur"]
         },
         {
-          name: "Vegan Banana Bread",
-          description: "Moist banana bread made with plant-based ingredients.",
-          price: 4.00,
+          name: "Roti Pisang Vegan",
+          description: "Roti pisang lembab dibuat dengan bahan nabati.",
+          price: 50000,
           image: "/images/menu/pastry4.jpg",
           isPopular: false,
           isVegan: true,
           isGlutenFree: false,
-          allergens: ["Gluten", "Nuts"]
+          allergens: ["Gluten", "Kacang"]
         },
         {
-          name: "Gluten-Free Cheesecake",
-          description: "Creamy cheesecake with gluten-free crust and berry compote.",
-          price: 5.50,
+          name: "Cheesecake Bebas Gluten",
+          description: "Cheesecake krim dengan alas bebas gluten dan selai berry.",
+          price: 65000,
           image: "/images/menu/pastry5.jpg",
           isPopular: false,
           isVegan: false,
           isGlutenFree: true,
-          allergens: ["Dairy", "Eggs"]
+          allergens: ["Susu", "Telur"]
         }
       ]
     },
     {
-      name: "Light Meals",
-      description: "Perfect options for breakfast or a light lunch during your visit.",
+      name: "Hidangan Ringan",
+      description: "Pilihan sempurna untuk sarapan atau makan siang ringan selama kunjungan Anda.",
       items: [
         {
-          name: "Avocado Toast",
-          description: "Sourdough toast topped with smashed avocado, cherry tomatoes, and microgreens.",
-          price: 7.50,
+          name: "Roti Alpukat",
+          description: "Roti sourdough dengan alpukat tumbuk, tomat ceri, dan microgreens.",
+          price: 95000,
           image: "/images/menu/food1.jpg",
           isPopular: true,
           isVegan: true,
@@ -201,128 +201,110 @@ export const cafeInfo = {
           allergens: ["Gluten"]
         },
         {
-          name: "Breakfast Sandwich",
-          description: "Egg, cheese, and your choice of bacon or spinach on a toasted brioche bun.",
-          price: 6.75,
+          name: "Sandwich Sarapan",
+          description: "Telur, keju, dan pilihan bacon atau bayam di atas roti brioche.",
+          price: 85000,
           image: "/images/menu/food2.jpg",
           isPopular: true,
           isVegan: false,
           isGlutenFree: false,
-          allergens: ["Gluten", "Dairy", "Eggs"]
+          allergens: ["Gluten", "Susu", "Telur"]
         },
         {
-          name: "Quinoa Bowl",
-          description: "Hearty bowl with quinoa, roasted vegetables, and tahini dressing.",
-          price: 8.50,
+          name: "Mangkuk Quinoa",
+          description: "Mangkuk bergizi dengan quinoa, sayuran panggang, dan saus tahini.",
+          price: 110000,
           image: "/images/menu/food3.jpg",
           isPopular: false,
           isVegan: true,
           isGlutenFree: true,
-          allergens: ["Sesame"]
+          allergens: ["Wijen"]
         },
         {
-          name: "Caprese Panini",
-          description: "Fresh mozzarella, tomato, basil, and balsamic glaze on grilled ciabatta.",
-          price: 8.75,
+          name: "Panini Caprese",
+          description: "Mozzarella segar, tomat, daun basil, dan glaze balsamic di ciabatta panggang.",
+          price: 110000,
           image: "/images/menu/food4.jpg",
           isPopular: false,
           isVegan: false,
           isGlutenFree: false,
-          allergens: ["Gluten", "Dairy"]
+          allergens: ["Gluten", "Susu"]
         }
       ]
     }
   ];
   
-  // Gallery images
+  // Gambar Galeri
   export const galleryImages = [
     {
       src: "/images/gallery1.jpg",
-      alt: "Café interior",
-      title: "Our Cozy Space",
-      description: "The perfect atmosphere for work or relaxation"
+      alt: "Interior kafe",
+      title: "Ruang Kami yang Nyaman",
+      description: "Suasana sempurna untuk bekerja atau bersantai"
     },
     {
       src: "/images/gallery2.jpg",
-      alt: "Coffee preparation",
-      title: "Coffee Brewing",
-      description: "Watching our baristas work their magic"
+      alt: "Persiapan kopi",
+      title: "Proses Penyeduhan Kopi",
+      description: "Menyaksikan barista kami bekerja dengan sihir mereka"
     },
     {
       src: "/images/gallery3.jpg",
-      alt: "Latte art",
-      title: "Latte Art",
-      description: "Beautiful designs on every cup"
+      alt: "Seni latte",
+      title: "Seni Latte",
+      description: "Desain indah di setiap cangkir"
     },
     {
       src: "/images/gallery4.jpg",
-      alt: "Café seating",
-      title: "Outdoor Seating",
-      description: "Enjoy your coffee in the fresh air"
+      alt: "Tempat duduk kafe",
+      title: "Tempat Duduk Luar",
+      description: "Nikmati kopi Anda di udara segar"
     },
     {
       src: "/images/gallery5.jpg",
-      alt: "Coffee beans",
-      title: "Premium Beans",
-      description: "Sourced from ethical farms worldwide"
+      alt: "Biji kopi",
+      title: "Biji Premium",
+      description: "Didapatkan dari perkebunan etis di seluruh dunia"
     },
     {
       src: "/images/gallery6.jpg",
-      alt: "Pastry display",
-      title: "Fresh Pastries",
-      description: "Baked daily in our kitchen"
+      alt: "Pajangan pastri",
+      title: "Pastri Segar",
+      description: "Dipanggang setiap hari di dapur kami"
     }
   ];
   
-  // Team members
+  // Anggota Tim
   export const teamMembers = [
     {
-      name: "Alex Johnson",
-      role: "Founder & Head Barista",
-      bio: "Coffee enthusiast with over 10 years of experience in specialty coffee.",
+      name: "Rabila Anjasmara",
+      role: "Pendiri & Kepala Barista",
+      bio: "Pecinta kopi dengan pengalaman lebih dari 10 tahun di bidang kopi spesial.",
       image: "/images/founder1.jpg"
-    },
-    {
-      name: "Jamie Smith",
-      role: "Co-Founder & Pastry Chef",
-      bio: "Trained in Paris, Jamie brings artisanal baking techniques to our café.",
-      image: "/images/founder2.jpg"
-    },
-    {
-      name: "Taylor Reed",
-      role: "Manager",
-      bio: "Ensures everything runs smoothly while maintaining our high standards.",
-      image: "/images/team1.jpg"
-    },
-    {
-      name: "Morgan Lee",
-      role: "Barista",
-      bio: "Known for creating the most intricate latte art designs.",
-      image: "/images/team2.jpg"
     }
   ];
   
-  // Events
+  // Acara
   export const upcomingEvents = [
     {
-      title: "Coffee Tasting Night",
-      date: "June 15, 2025",
-      time: "7:00 PM - 9:00 PM",
-      description: "Sample our new seasonal beans and learn about their origins.",
+      title: "Malam Degustasi Kopi",
+      date: "15 Juni 2025",
+      time: "19.00 - 21.00",
+      description: "Cicipi biji kopi musiman baru kami dan pelajari asal-usulnya.",
       image: "/images/events/event1.jpg"
     },
     {
-      title: "Latte Art Workshop",
-      date: "June 22, 2025",
-      time: "4:00 PM - 6:00 PM",
-      description: "Learn the basics of creating beautiful designs in your coffee.",
+      title: "Workshop Seni Latte",
+      date: "22 Juni 2025",
+      time: "16.00 - 18.00",
+      description: "Pelajari dasar-dasar membuat desain indah di kopi Anda.",
       image: "/images/events/event2.jpg"
     },
     {
-      title: "Live Music Friday",
-      date: "Every Friday",
-      time: "6:00 PM - 8:00 PM",
-      description: "Local musicians perform while you enjoy your evening coffee.",
+      title: "Musik Hidup Jumat",
+      date: "Setiap Jumat",
+      time: "18.00 - 20.00",
+      description: "Musisi lokal tampil sementara Anda menikmati kopi malam.",
       image: "/images/events/event3.jpg"
     }
   ];

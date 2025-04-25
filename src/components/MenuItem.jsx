@@ -16,7 +16,7 @@ export default function MenuItem({ item }) {
         {item.isPopular && (
           <div className="absolute top-3 right-3 bg-amber-700 text-white px-3 py-1 text-sm rounded-full shadow-lg">
             <span className="flex items-center">
-              <i className="fas fa-star mr-1"></i> Popular
+              <i className="fas fa-star mr-1"></i> Populer
             </span>
           </div>
         )}
@@ -25,7 +25,7 @@ export default function MenuItem({ item }) {
       <div className="p-5">
         <div className="flex justify-between items-start mb-3">
           <h3 className="text-xl font-semibold text-amber-900 group-hover:text-amber-700 transition-colors">{item.name}</h3>
-          <span className="font-bold text-amber-900 text-xl">${item.price.toFixed(2)}</span>
+          <span className="font-bold text-amber-900 text-xl">Rp {item.price.toLocaleString('id-ID')}</span>
         </div>
         
         <p className="text-gray-600 mb-4">{item.description}</p>
@@ -38,18 +38,18 @@ export default function MenuItem({ item }) {
           )}
           {item.isGlutenFree && (
             <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded flex items-center">
-              <i className="fas fa-wheat-alt mr-1"></i> Gluten-Free
+              <i className="fas fa-wheat-alt mr-1"></i> Bebas Gluten
             </span>
           )}
           {item.allergens && item.allergens.length > 0 && (
             <span className="bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded flex items-center">
-              <i className="fas fa-exclamation-circle mr-1"></i> Contains: {item.allergens.join(', ')}
+              <i className="fas fa-exclamation-circle mr-1"></i> Mengandung: {item.allergens.join(', ')}
             </span>
           )}
         </div>
         
         <button className="w-full bg-amber-700 hover:bg-amber-800 text-white py-2 rounded-lg text-sm font-medium transition duration-300 flex items-center justify-center">
-          <i className="fas fa-plus-circle mr-2"></i> Add to Order
+          <i className="fas fa-plus-circle mr-2"></i> Tambah ke Pesanan
         </button>
       </div>
     </div>
