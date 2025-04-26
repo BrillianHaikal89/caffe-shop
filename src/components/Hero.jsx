@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -45,15 +47,30 @@ export default function Hero() {
         </div>
       </div>
       
-      {/* Elemen dekoratif cangkir kopi */}
-      <div className="hidden md:block absolute bottom-20 right-20">
-        <div className="relative w-20 h-20">
+      {/* Elemen dekoratif cangkir kopi - IMPROVED */}
+      <div className="hidden md:flex absolute bottom-20 right-20 items-center space-x-3">
+        {/* Coffee cup icon with enhanced styling and subtle animation */}
+        <div className="relative w-24 h-24 bg-white/10 backdrop-blur-sm rounded-full p-2 shadow-lg transform hover:rotate-12 transition-transform duration-500">
           <Image 
             src="/logo.png"
             alt="Dekorasi cangkir kopi"
             fill
-            className="object-contain brightness-0 invert opacity-60"
+            className="object-contain brightness-100 filter drop-shadow-lg animate-pulse"
+            style={{ animationDuration: '3s' }}
           />
+          {/* Steam effect */}
+          <div className="absolute -top-6 left-1/2 -translate-x-1/2 opacity-80">
+            <div className="w-1 h-5 bg-white/50 rounded-full mx-auto animate-steam-1"></div>
+            <div className="w-1 h-6 bg-white/50 rounded-full mx-auto mt-1 animate-steam-2" 
+                 style={{ animationDelay: '0.3s' }}></div>
+            <div className="w-1 h-4 bg-white/50 rounded-full mx-auto mt-1 animate-steam-3"
+                 style={{ animationDelay: '0.6s' }}></div>
+          </div>
+        </div>
+        
+        {/* Optional: Text element next to the coffee cup */}
+        <div className="text-white/90 text-sm font-light italic rotate-12">
+          Nikmati kopi terbaik!
         </div>
       </div>
     </section>
