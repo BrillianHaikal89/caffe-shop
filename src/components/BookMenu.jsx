@@ -181,7 +181,7 @@ export default function BookMenu({ menuData, addToCart }) {
                     <div className="absolute inset-0 bg-white/90 flex items-center justify-center">
                       <div className="relative w-32 h-32">
                         <Image
-                          src="/logo.png"
+                          src="/logo_nb.png"
                           alt="All The Time Café"
                           fill
                           className="object-contain"
@@ -251,7 +251,7 @@ export default function BookMenu({ menuData, addToCart }) {
                     <div className="absolute inset-0 bg-white/90 flex items-center justify-center">
                       <div className="relative w-40 h-40">
                         <Image
-                          src="/logo.png"
+                          src="/logo_nb.png"
                           alt="All The Time Café"
                           fill
                           className="object-contain"

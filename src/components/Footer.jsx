@@ -23,7 +23,7 @@ export default function Footer() {
             <div className="flex items-center space-x-3 mb-6">
               <div className="relative w-12 h-12">
                 <Image 
-                  src="/logo.png" 
+                  src="/logo_nb.png" 
                   alt="All The Time Café" 
                   fill
                   className="object-contain brightness-0 invert"

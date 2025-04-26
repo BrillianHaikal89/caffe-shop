@@ -27,7 +27,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center space-x-2">
             <div className="relative w-12 h-12">
               <Image 
-                src="/logo.png" 
+                src="/logo_nb.png" 
                 alt="All The Time Café" 
                 fill
                 className="object-contain"
