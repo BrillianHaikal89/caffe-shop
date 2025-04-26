@@ -5,6 +5,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export default function Home() {
+  // Pre-filled WhatsApp message (URL encoded)
+  const whatsappMessage = encodeURIComponent("Halo, saya ingin menu minuman favorit di caffe all the time dong");
+  const whatsappLink = `https://wa.me/6285951123949?text=${whatsappMessage}`;
+
   return (
     <main className="min-h-screen">
       <Hero />
@@ -276,7 +280,7 @@ export default function Home() {
             Dapatkan Petunjuk Arah
           </a>
           
-          {/* Updated Social Media Section - Instagram and WhatsApp only */}
+          {/* Updated Social Media Section - Instagram and WhatsApp with pre-filled message */}
           <div className="mt-12 flex justify-center space-x-8">
             <a 
               href="https://www.instagram.com/allthetimecoffee_/" 
@@ -288,7 +292,7 @@ export default function Home() {
               <span className="text-sm">Instagram</span>
             </a>
             <a 
-              href="https://wa.me/6285951123949" 
+              href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-amber-200 transition-colors flex flex-col items-center"
