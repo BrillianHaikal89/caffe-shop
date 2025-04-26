@@ -1,6 +1,7 @@
 import React from 'react';
 import Hero from '../components/Hero';
 import About from '../components/About';
+import Cart from '../components/Cart';
 import Link from 'next/link';
 import Image from 'next/image';
 
