@@ -276,15 +276,25 @@ export default function Home() {
             Dapatkan Petunjuk Arah
           </a>
           
-          <div className="mt-12 flex justify-center space-x-6">
-            <a href="#" className="text-white hover:text-amber-200 transition-colors">
-              <i className="fab fa-facebook-f text-2xl"></i>
+          {/* Updated Social Media Section - Instagram and WhatsApp only */}
+          <div className="mt-12 flex justify-center space-x-8">
+            <a 
+              href="https://www.instagram.com/allthetimecoffee_/" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-amber-200 transition-colors flex flex-col items-center"
+            >
+              <i className="fab fa-instagram text-3xl mb-1"></i>
+              <span className="text-sm">Instagram</span>
             </a>
-            <a href="https://www.instagram.com/allthetimecoffee_/" className="text-white hover:text-amber-200 transition-colors">
-              <i className="fab fa-instagram text-2xl"></i>
-            </a>
-            <a href="#" className="text-white hover:text-amber-200 transition-colors">
-              <i className="fab fa-twitter text-2xl"></i>
+            <a 
+              href="https://wa.me/6285951123949" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-amber-200 transition-colors flex flex-col items-center"
+            >
+              <i className="fab fa-whatsapp text-3xl mb-1"></i>
+              <span className="text-sm">WhatsApp</span>
             </a>
           </div>
         </div>

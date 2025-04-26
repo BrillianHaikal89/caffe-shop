@@ -30,15 +30,25 @@ export default function Footer() {
             <p className="text-gray-400 mb-6">
               Sudut nyaman Anda untuk pengalaman kopi premium dan camilan lezat.
             </p>
+            {/* Updated social media section - Instagram and WhatsApp only */}
             <div className="flex space-x-4">
-              <a href="#" aria-label="Facebook" className="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-amber-700 transition duration-300">
-                <i className="fab fa-facebook-f"></i>
-              </a>
-              <a href="https://www.instagram.com/allthetimecoffee_/" aria-label="Instagram" className="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-amber-700 transition duration-300">
+              <a 
+                href="https://www.instagram.com/allthetimecoffee_/" 
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram" 
+                className="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-amber-700 transition duration-300"
+              >
                 <i className="fab fa-instagram"></i>
               </a>
-              <a href="#" aria-label="Twitter" className="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-amber-700 transition duration-300">
-                <i className="fab fa-twitter"></i>
+              <a 
+                href="https://wa.me/6285951123949" 
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp" 
+                className="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-amber-700 transition duration-300"
+              >
+                <i className="fab fa-whatsapp"></i>
               </a>
             </div>
           </div>
@@ -122,7 +132,12 @@ export default function Footer() {
             </ul>
             
             <div className="mt-6 pt-4 border-t border-gray-800">
-              <a href="https://maps.app.goo.gl/nszcA53vKJAsNjrZ8" className="text-amber-500 hover:text-amber-400 transition duration-300 flex items-center">
+              <a 
+                href="https://maps.app.goo.gl/nszcA53vKJAsNjrZ8" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-amber-500 hover:text-amber-400 transition duration-300 flex items-center"
+              >
                 <i className="fas fa-map-marked-alt mr-2"></i>
                 Dapatkan Petunjuk Arah
               </a>
