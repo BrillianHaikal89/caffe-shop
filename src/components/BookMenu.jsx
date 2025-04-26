@@ -175,14 +175,22 @@ export default function BookMenu({ menuData, addToCart }) {
               <div className="w-full h-full bg-amber-800 rounded-lg shadow-xl book-shadow">
                 <div className="flex flex-col items-center justify-center text-white p-6 h-full">
                   <h1 className="text-4xl font-bold mb-6 text-center gold-foil">All The Time Café</h1>
-                  <div className="relative w-32 h-32 mb-6">
-                    <Image
-                      src="/logo.png"
-                      alt="All The Time Café"
-                      fill
-                      className="object-contain brightness-0 invert"
-                    />
+                  
+                  {/* Circular logo container */}
+                  <div className="relative w-40 h-40 mb-6 rounded-full overflow-hidden border-4 border-amber-600/50 shadow-lg">
+                    <div className="absolute inset-0 bg-white/90 flex items-center justify-center">
+                      <div className="relative w-32 h-32">
+                        <Image
+                          src="/logo.png"
+                          alt="All The Time Café"
+                          fill
+                          className="object-contain"
+                          priority
+                        />
+                      </div>
+                    </div>
                   </div>
+                  
                   <h2 className="text-2xl font-medium mb-4 text-center">Menu</h2>
                   <p className="text-lg text-center mb-8">
                     Dibuat dengan passion dan bahan-bahan terbaik
@@ -237,14 +245,22 @@ export default function BookMenu({ menuData, addToCart }) {
               }`}>
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-10">
                   <h1 className="text-5xl font-bold mb-8 gold-foil">All The Time Café</h1>
-                  <div className="relative w-40 h-40 mb-8">
-                    <Image
-                      src="/logo.png"
-                      alt="All The Time Café"
-                      fill
-                      className="object-contain brightness-0 invert"
-                    />
+                  
+                  {/* Circular logo container */}
+                  <div className="relative w-48 h-48 mb-8 rounded-full overflow-hidden border-4 border-amber-600/50 shadow-lg">
+                    <div className="absolute inset-0 bg-white/90 flex items-center justify-center">
+                      <div className="relative w-40 h-40">
+                        <Image
+                          src="/logo.png"
+                          alt="All The Time Café"
+                          fill
+                          className="object-contain"
+                          priority
+                        />
+                      </div>
+                    </div>
                   </div>
+                  
                   <h2 className="text-3xl font-medium mb-6">Menu</h2>
                   <p className="text-xl text-center max-w-md mb-12">
                     Dibuat dengan passion dan bahan-bahan terbaik untuk pengalaman kopi yang tak terlupakan
@@ -365,7 +381,7 @@ function TableOfContents({ categories, isMobile }) {
   );
 }
 
-// Menu Category Page component - FIXED FOR MOBILE
+// Menu Category Page component
 function MenuCategoryPage({ name, description, items, pageNumber, totalPages, addToCart, isMobile }) {
   return (
     <div className="flex flex-col h-full">
