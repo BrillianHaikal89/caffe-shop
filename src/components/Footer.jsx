@@ -3,6 +3,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export default function Footer() {
+  // Pre-filled WhatsApp message (URL encoded)
+  const whatsappMessage = encodeURIComponent("Halo, saya ingin menu minuman favorit di caffe all the time dong");
+  const whatsappLink = `https://wa.me/6285951123949?text=${whatsappMessage}`;
+
   return (
     <footer id="contact" className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 py-16">
@@ -30,7 +34,7 @@ export default function Footer() {
             <p className="text-gray-400 mb-6">
               Sudut nyaman Anda untuk pengalaman kopi premium dan camilan lezat.
             </p>
-            {/* Updated social media section - Instagram and WhatsApp only */}
+            {/* Updated social media section - Instagram and WhatsApp with pre-filled message */}
             <div className="flex space-x-4">
               <a 
                 href="https://www.instagram.com/allthetimecoffee_/" 
@@ -42,7 +46,7 @@ export default function Footer() {
                 <i className="fab fa-instagram"></i>
               </a>
               <a 
-                href="https://wa.me/6285951123949" 
+                href={whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp" 
