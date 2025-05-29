@@ -62,7 +62,7 @@ export default function About() {
                 />
               </div>
               <p className="font-medium text-amber-900">
-                Muhammad Brillian Haikal, Pendiri
+                Muhamad Brillian Haikal, Pendiri
               </p>
             </div>
           </div>
