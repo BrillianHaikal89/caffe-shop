@@ -63,12 +63,7 @@ export default function Navbar() {
             </Link>
           </div>
           
-          {/* Tombol Pesan (Desktop) */}
-          <div className="hidden md:block">
-            <button className="btn-primary">
-              Pesan Daring
-            </button>
-          </div>
+      
           
           {/* Tombol Menu Mobile */}
           <div className="md:hidden">
