@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import { initializeMidtrans } from '../../lib/midtransService';
 
 // Bank account details for bank transfer
 const bankAccounts = [
@@ -19,22 +20,66 @@ const bankAccounts = [
 const qrPayments = [
   {
     name: "DANA",
-    qrImage: "/images/payments/dana-qr.png" // This should be replaced with actual QR code image
+    qrImage: "/images/payments/dana-qr.png"
   },
   {
     name: "GoPay",
-    qrImage: "/images/payments/gopay-qr.png" // This should be replaced with actual QR code image
+    qrImage: "/images/payments/gopay-qr.png"
   },
   {
     name: "OVO",
-    qrImage: "/images/payments/ovo-qr.png" // This should be replaced with actual QR code image
+    qrImage: "/images/payments/ovo-qr.png"
   }
 ];
 
-/**
- * Payment options component for the cart
- */
-export default function CartPayment({ paymentMethod, handlePaymentMethodChange, customerDetails, totalPrice }) {
+export default function CartPayment({ 
+  paymentMethod, 
+  handlePaymentMethodChange, 
+  customerDetails, 
+  totalPrice,
+  cart,
+  orderNumber,
+  generateReceiptWhatsAppLink,
+  handleOrderComplete,
+  setCheckoutStep
+}) {
+  const handlePayment = () => {
+    if (paymentMethod === 'cash') {
+      // For cash payments, proceed directly to confirmation
+      setCheckoutStep('confirmation');
+    } else {
+      // For non-cash payments, use Midtrans
+      const orderDetails = {
+        ...customerDetails,
+        paymentMethod,
+        orderId: orderNumber
+      };
+      
+      initializeMidtrans(
+        orderDetails,
+        cart,
+        totalPrice,
+        (result) => {
+          // Payment success callback
+          try {
+            const whatsappLink = generateReceiptWhatsAppLink(
+              orderDetails, 
+              cart, 
+              totalPrice, 
+              customerDetails.orderType === 'delivery' ? 15000 : 0
+            );
+            window.open(whatsappLink, '_blank');
+            setCheckoutStep('confirmation');
+          } catch (error) {
+            console.error('Error sending WhatsApp receipt:', error);
+            alert('Pembayaran berhasil tetapi terjadi kesalahan saat mengirim struk ke WhatsApp. Silakan hubungi kami.');
+            setCheckoutStep('confirmation');
+          }
+        }
+      );
+    }
+  };
+
   return (
     <div className="p-3 sm:p-4">
       <h3 className="font-medium mb-3 sm:mb-4">Pilih Metode Pembayaran</h3>
@@ -213,6 +258,25 @@ export default function CartPayment({ paymentMethod, handlePaymentMethodChange, 
             <span>Rp {(totalPrice + (customerDetails.orderType === 'delivery' ? 15000 : 0)).toLocaleString('id-ID')}</span>
           </div>
         </div>
+      </div>
+
+      {/* Navigation */}
+      <div className="mt-4 flex justify-between">
+        <button
+          onClick={() => setCheckoutStep('details')}
+          className="px-3 sm:px-6 py-2 bg-gray-200 hover:bg-gray-300 rounded text-sm sm:text-base"
+        >
+          <i className="fas fa-arrow-left mr-1"></i> Kembali
+        </button>
+
+        <button
+          onClick={handlePayment}
+          className={`px-3 sm:px-6 py-2 rounded text-sm sm:text-base ${
+            paymentMethod === 'cash' ? 'bg-amber-700 hover:bg-amber-800' : 'bg-green-600 hover:bg-green-700'
+          } text-white`}
+        >
+          {paymentMethod === 'cash' ? 'Konfirmasi Pesanan' : 'Lanjutkan Pembayaran'}
+        </button>
       </div>
     </div>
   );
