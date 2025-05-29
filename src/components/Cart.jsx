@@ -1,6 +1,15 @@
+'use client';
+
 import React, { useState } from 'react';
-import { CartProgress, CartItem, CartEmpty, CartDetailsForm, CartPayment, CartConfirmation, CartNavigation } from './components/cart';
-import { generateReceiptWhatsAppLink } from '../lib/whatsappService';
+import CartItem from './cart/CartItem';
+import CartEmpty from './cart/CartEmpty';
+import CartDetailsForm from './cart/CartDetailsForm';
+import CartPayment from './cart/CartPayment';
+import CartConfirmation from './cart/CartConfirmation';
+import CartProgress from './cart/CartProgress';
+import CartNavigation from './cart/CartNavigation';
+
+const DELIVERY_FEE = 15000;
 
 export default function Cart({ cart, updateQuantity, removeItem, onClose }) {
   const [checkoutStep, setCheckoutStep] = useState('cart');
