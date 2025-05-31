@@ -56,37 +56,6 @@ export default function CartDetailsForm({ customerDetails, handleInputChange }) 
           />
         </div>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Tipe Pesanan *
-          </label>
-          <div className="flex flex-wrap gap-4">
-            <label className="flex items-center">
-              <input
-                type="radio"
-                name="orderType"
-                value="pickup"
-                checked={customerDetails.orderType === 'pickup'}
-                onChange={handleInputChange}
-                className="mr-2 text-amber-700 focus:ring-amber-500"
-              />
-              <span>Ambil Sendiri</span>
-            </label>
-
-            <label className="flex items-center">
-              <input
-                type="radio"
-                name="orderType"
-                value="delivery"
-                checked={customerDetails.orderType === 'delivery'}
-                onChange={handleInputChange}
-                className="mr-2 text-amber-700 focus:ring-amber-500"
-              />
-              <span>Pengantaran</span>
-            </label>
-          </div>
-        </div>
-
         {customerDetails.orderType === 'delivery' && (
           <div>
             <label htmlFor="deliveryAddress" className="block text-sm font-medium text-gray-700 mb-1">

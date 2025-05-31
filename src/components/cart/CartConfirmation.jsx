@@ -69,13 +69,6 @@ export default function CartConfirmation({
             <div className="font-medium">{customerDetails.name}</div>
           </div>
 
-          <div className="mb-3 sm:mb-4">
-            <div className="text-gray-500">Tipe Pesanan</div>
-            <div className="font-medium">
-              {customerDetails.orderType === 'pickup' ? 'Ambil Sendiri' : 'Pengantaran'}
-            </div>
-          </div>
-
           {customerDetails.orderType === 'delivery' && (
             <div className="mb-3 sm:mb-4">
               <div className="text-gray-500">Alamat Pengantaran</div>
