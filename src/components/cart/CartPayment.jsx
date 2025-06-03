@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react'; // Tambahkan import useState
 import Image from 'next/image';
 
 // Bank account details for bank transfer

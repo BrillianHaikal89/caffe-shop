@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react'; // Pastikan semua import ada
 import { createMidtransTransaction, generateReceiptWhatsAppLink } from '../../lib/paymentService';
 
 export default function CartConfirmation({ 
@@ -14,11 +14,9 @@ export default function CartConfirmation({
   const [error, setError] = useState(null);
   const [whatsappSent, setWhatsappSent] = useState(false);
 
-  // Proses pembayaran ketika komponen mount
   useEffect(() => {
     const processPayment = async () => {
       try {
-        // Untuk metode non-cash, buat transaksi Midtrans
         if (paymentMethod !== 'cash') {
           const transaction = await createMidtransTransaction(
             { 
@@ -32,13 +30,11 @@ export default function CartConfirmation({
           
           if (transaction.token) {
             setPaymentUrl(transaction.redirect_url);
-            // Buka halaman pembayaran di tab baru
             window.open(transaction.redirect_url, '_blank');
           }
         }
 
-        // Kirim struk WhatsApp jika ada nomor telepon
-        if (customerDetails.phone && customerDetails.phone.trim()) {
+        if (customerDetails.phone?.trim()) {
           const whatsappLink = generateReceiptWhatsAppLink(
             { 
               ...customerDetails, 
@@ -62,7 +58,7 @@ export default function CartConfirmation({
     };
 
     processPayment();
-  }, []);
+  }, [customerDetails, paymentMethod, totalPrice, cart, orderNumber]);
 
   const renderPaymentStatus = () => {
     if (isProcessing) {

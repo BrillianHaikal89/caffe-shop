@@ -68,11 +68,10 @@ export const createMidtransTransaction = async(orderDetails, cartItems, totalPri
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        const data = await response.json();
-        return data;
+        return await response.json();
     } catch (error) {
         console.error('Error creating transaction:', error);
-        throw new Error('Gagal membuat transaksi pembayaran. Silakan coba lagi.');
+        throw error;
     }
 };
 
