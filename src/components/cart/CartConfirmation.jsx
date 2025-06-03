@@ -1,9 +1,6 @@
-import React, { useEffect } from 'react';
-import { generateReceiptWhatsAppLink } from '../../lib/whatsappService';
+import React, { useEffect, useState } from 'react';
+import { createMidtransTransaction, generateReceiptWhatsAppLink } from '../../lib/paymentService';
 
-/**
- * Order confirmation component for the cart
- */
 export default function CartConfirmation({ 
   customerDetails, 
   paymentMethod, 
@@ -11,51 +8,115 @@ export default function CartConfirmation({
   cart,
   handleOrderComplete 
 }) {
-  // Generate a random order number
-  const orderNumber = `ATT${Math.floor(Math.random() * 10000)}`;
-  
-  // Send WhatsApp receipt when component mounts
+  const [orderNumber] = useState(`ATT${Date.now().toString().slice(-6)}`);
+  const [isProcessing, setIsProcessing] = useState(true);
+  const [paymentUrl, setPaymentUrl] = useState(null);
+  const [error, setError] = useState(null);
+  const [whatsappSent, setWhatsappSent] = useState(false);
+
+  // Proses pembayaran ketika komponen mount
   useEffect(() => {
-    // Make sure there's a valid phone number before trying to send
-    if (!customerDetails.phone || !customerDetails.phone.trim()) {
-      console.warn('No phone number provided for WhatsApp receipt');
-      return;
-    }
-    
-    try {
-      // Combine all order details
-      const orderDetails = {
-        ...customerDetails,
-        paymentMethod,
-        orderId: orderNumber
-      };
-      
-      // Generate WhatsApp link with receipt
-      const whatsappLink = generateReceiptWhatsAppLink(
-        orderDetails, 
-        cart, 
-        totalPrice, 
-        customerDetails.orderType === 'delivery' ? 15000 : 0
-      );
-      
-      // Open WhatsApp with the pre-filled receipt in a new tab
-      window.open(whatsappLink, '_blank');
-    } catch (error) {
-      console.error('Error sending WhatsApp receipt:', error);
-      alert('Terjadi kesalahan saat mengirim struk ke WhatsApp. Silakan cek nomor telepon Anda.');
-    }
+    const processPayment = async () => {
+      try {
+        // Untuk metode non-cash, buat transaksi Midtrans
+        if (paymentMethod !== 'cash') {
+          const transaction = await createMidtransTransaction(
+            { 
+              ...customerDetails, 
+              orderId: orderNumber,
+              paymentMethod 
+            },
+            cart,
+            totalPrice
+          );
+          
+          if (transaction.token) {
+            setPaymentUrl(transaction.redirect_url);
+            // Buka halaman pembayaran di tab baru
+            window.open(transaction.redirect_url, '_blank');
+          }
+        }
+
+        // Kirim struk WhatsApp jika ada nomor telepon
+        if (customerDetails.phone && customerDetails.phone.trim()) {
+          const whatsappLink = generateReceiptWhatsAppLink(
+            { 
+              ...customerDetails, 
+              orderId: orderNumber,
+              paymentMethod 
+            },
+            cart, 
+            totalPrice, 
+            customerDetails.orderType === 'delivery' ? 15000 : 0
+          );
+          
+          window.open(whatsappLink, '_blank');
+          setWhatsappSent(true);
+        }
+      } catch (err) {
+        console.error('Error processing payment:', err);
+        setError(err.message || 'Terjadi kesalahan saat memproses pembayaran. Silakan coba lagi.');
+      } finally {
+        setIsProcessing(false);
+      }
+    };
+
+    processPayment();
   }, []);
-  
+
+  const renderPaymentStatus = () => {
+    if (isProcessing) {
+      return (
+        <>
+          <div className="mb-4 sm:mb-6 text-amber-500 text-4xl sm:text-6xl">
+            <i className="fas fa-spinner fa-spin"></i>
+          </div>
+          <h3 className="text-xl sm:text-2xl font-bold mb-2">Memproses Pembayaran...</h3>
+          <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">
+            Sedang memproses pembayaran Anda, harap tunggu sebentar...
+          </p>
+        </>
+      );
+    }
+
+    if (error) {
+      return (
+        <>
+          <div className="mb-4 sm:mb-6 text-red-500 text-4xl sm:text-6xl">
+            <i className="fas fa-exclamation-circle"></i>
+          </div>
+          <h3 className="text-xl sm:text-2xl font-bold mb-2">Gagal Memproses Pembayaran</h3>
+          <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">
+            {error}
+          </p>
+          <button
+            onClick={() => window.location.reload()}
+            className="bg-amber-700 hover:bg-amber-800 text-white px-4 py-2 rounded mb-4"
+          >
+            Coba Lagi
+          </button>
+        </>
+      );
+    }
+
+    return (
+      <>
+        <div className="mb-4 sm:mb-6 text-green-500 text-4xl sm:text-6xl">
+          <i className="fas fa-check-circle"></i>
+        </div>
+        <h3 className="text-xl sm:text-2xl font-bold mb-2">Terima Kasih!</h3>
+        <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">
+          {paymentMethod === 'cash'
+            ? 'Pesanan Anda telah dikonfirmasi. Kami telah mengirimkan struk pembelian ke WhatsApp Anda.'
+            : 'Pesanan Anda telah dikonfirmasi. Silakan selesaikan pembayaran di halaman yang telah dibuka.'}
+        </p>
+      </>
+    );
+  };
+
   return (
     <div className="p-3 sm:p-4 text-center">
-      <div className="mb-4 sm:mb-6 text-green-500 text-4xl sm:text-6xl">
-        <i className="fas fa-check-circle"></i>
-      </div>
-
-      <h3 className="text-xl sm:text-2xl font-bold mb-2">Terima Kasih!</h3>
-      <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">
-        Pesanan Anda telah dikonfirmasi. Kami telah mengirimkan struk pembelian ke WhatsApp Anda.
-      </p>
+      {renderPaymentStatus()}
 
       <div className="bg-gray-50 rounded-lg p-3 sm:p-4 mb-6 text-xs sm:text-sm">
         <div className="text-left">
@@ -80,7 +141,8 @@ export default function CartConfirmation({
             <div className="text-gray-500">Metode Pembayaran</div>
             <div className="font-medium">
               {paymentMethod === 'cash' && 'Tunai'}
-              {paymentMethod === 'transfer' && 'Transfer Bank'}
+              {paymentMethod === 'credit_card' && 'Kartu Kredit/Debit'}
+              {paymentMethod === 'bank_transfer' && 'Transfer Bank'}
               {paymentMethod === 'ewallet' && 'E-Wallet'}
             </div>
           </div>
@@ -93,6 +155,23 @@ export default function CartConfirmation({
           </div>
         </div>
       </div>
+
+      {paymentUrl && (
+        <button
+          onClick={() => window.open(paymentUrl, '_blank')}
+          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded mb-4"
+        >
+          <i className="fas fa-external-link-alt mr-2"></i>
+          Buka Halaman Pembayaran
+        </button>
+      )}
+
+      {whatsappSent && (
+        <div className="mb-4 text-sm text-green-600">
+          <i className="fas fa-check-circle mr-1"></i>
+          Struk pembelian telah dikirim ke WhatsApp Anda
+        </div>
+      )}
 
       <button
         onClick={handleOrderComplete}
